@@ -1,0 +1,46 @@
+{
+  "actual_sha256": {
+    "pull_request.parquet": "c0b8e81e1d099905ef9ea420bf907d45179771ff5972afce6c219d8cafcef3e8",
+    "repository.parquet": "a08e34be4921c708be88a4ebd9e275b32f37fd442bb2770c0b69c94834dc6aa7"
+  },
+  "agents": {
+    "Claude_Code": 1942,
+    "Copilot": 23496,
+    "Cursor": 4059,
+    "Devin": 6172,
+    "Google_Jules": 487,
+    "OpenAI_Codex": 35521
+  },
+  "created_at_max": "2025-10-24T23:59:31Z",
+  "created_at_min": "2024-12-24T00:23:09Z",
+  "expected_sha256": {
+    "pull_request.parquet": "c0b8e81e1d099905ef9ea420bf907d45179771ff5972afce6c219d8cafcef3e8",
+    "repository.parquet": "a08e34be4921c708be88a4ebd9e275b32f37fd442bb2770c0b69c94834dc6aa7"
+  },
+  "hash_ok": {
+    "pull_request.parquet": true,
+    "repository.parquet": true
+  },
+  "huggingface_url": "https://huggingface.co/datasets/hao-li/AIDev",
+  "light_columns": [
+    "id",
+    "number",
+    "agent",
+    "user",
+    "user_id",
+    "state",
+    "created_at",
+    "closed_at",
+    "merged_at",
+    "repo_id",
+    "repo_url",
+    "html_url"
+  ],
+  "light_sha256": "e9a86d91abac98c4e13a9aebc40bab72296b12f0f6e0a0e2fc6a45495f848901",
+  "n_pull_requests": 71677,
+  "n_repo_ids_in_prs": 6673,
+  "n_repositories": 6673,
+  "recorded_at": "2026-08-31T09:36:59.498586+00:00",
+  "repository_extract_sha256": "9f7ec6620e9e2c5aa3949cc5d32bcd47aab5957b5dd26f7eb41e460058dfc698",
+  "source": "hao-li/AIDev AIDev-pop (pull_request.parquet, repository.parquet)"
+}

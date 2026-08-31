@@ -1,0 +1,17 @@
+{
+  "headline_treatment": "B",
+  "intra_repo_draw": 625,
+  "k_days": 0,
+  "max_pairs_per_repo_stratum": 5,
+  "n_cross_pairs": 4699,
+  "n_intra_pairs": 255693,
+  "n_replay_candidates": 3707,
+  "n_repos_cross": 231,
+  "n_repos_cross_only": 19,
+  "n_repos_intra": 2156,
+  "n_repos_intra_only": 1944,
+  "n_repos_matched": 212,
+  "seed_intra_pairs": 42,
+  "seed_intra_repos": 42,
+  "seed_matched": 43
+}

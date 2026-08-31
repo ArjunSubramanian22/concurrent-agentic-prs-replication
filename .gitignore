@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mplconfig/
+.DS_Store
+paper/main.aux
+paper/main.log
+paper/main.out
+paper/main.blg
+paper/main.bbl
+paper/main.fdb_latexmk
+paper/main.fls
+paper/main.synctex.gz
+paper/main.pdf
+
+# Raw Hugging Face downloads (hashed; extract is committed)
+data/raw/*.parquet
+
+# Live API cache can be archived for reviewers but is not required in git
+data/cache/github/**
+!data/cache/github/.gitkeep
+
+# Generated replay (resumable; not the legacy 747-row file)
+data/replay/pairs_replay.csv
+
+# Secrets
+.env
+*.token

@@ -1,19 +1,19 @@
 claim_id,family,designation,claim_text,script,function,output_file,paper_location,status
-RQ1-OPEN-SHARE,1,confirmatory,Share of AIDev-pop PRs that are unresolved at snapshot cutoff (is_censored).,analysis/wp1_coactivity.py,open_pr_share,data/derived/wp1_prevalence.csv,sec:rq1,pending
-RQ1-HEADLINE-TREATMENT,1,confirmatory,Headline end-time treatment (A or B) under the pre-registered 5pp/10% rule.,analysis/wp1_coactivity.py,headline_treatment,data/derived/wp1_prevalence.csv,sec:rq1,pending
-RQ1-PR-LEVEL-K0,1,confirmatory,PR-level co-active share at k=0 for treatments A B C.,analysis/wp1_coactivity.py,pr_level_share,data/derived/wp1_prevalence.csv,tab:prevalence,pending
-RQ1-REPO-LEVEL-K0,1,confirmatory,Repo-level co-active share at k=0 (all repos and repos with >=2 PRs).,analysis/wp1_coactivity.py,repo_level_share,data/derived/wp1_prevalence.csv,tab:prevalence,pending
-RQ1-K-SWEEP,1,confirmatory,PR- and repo-level co-active shares at k in {0 1 3 7} for the headline treatment.,analysis/wp1_coactivity.py,k_sweep,data/derived/wp1_k_sweep.csv,tab:prevalence,pending
-RQ1-K-CURVE,1,confirmatory,PR-level co-active share as a function of continuous k in [0 14].,analysis/wp1_coactivity.py,k_curve,data/derived/wp1_k_curve.csv,fig:kcurve,pending
+RQ1-OPEN-SHARE,1,confirmatory,Share of AIDev-pop PRs that are unresolved at snapshot cutoff (is_censored).,analysis/wp1_coactivity.py,open_pr_share,data/derived/wp1_prevalence.csv,sec:rq1,computed
+RQ1-HEADLINE-TREATMENT,1,confirmatory,Headline end-time treatment (A or B) under the pre-registered 5pp/10% rule.,analysis/wp1_coactivity.py,headline_treatment,data/derived/wp1_prevalence.csv,sec:rq1,computed
+RQ1-PR-LEVEL-K0,1,confirmatory,PR-level co-active share at k=0 for treatments A B C.,analysis/wp1_coactivity.py,pr_level_share,data/derived/wp1_prevalence.csv,tab:prevalence,computed
+RQ1-REPO-LEVEL-K0,1,confirmatory,Repo-level co-active share at k=0 (all repos and repos with >=2 PRs).,analysis/wp1_coactivity.py,repo_level_share,data/derived/wp1_prevalence.csv,tab:prevalence,computed
+RQ1-K-SWEEP,1,confirmatory,PR- and repo-level co-active shares at k in {0 1 3 7} for the headline treatment.,analysis/wp1_coactivity.py,k_sweep,data/derived/wp1_k_sweep.csv,tab:prevalence,computed
+RQ1-K-CURVE,1,confirmatory,PR-level co-active share as a function of continuous k in [0 14].,analysis/wp1_coactivity.py,k_curve,data/derived/wp1_k_curve.csv,fig:kcurve,computed
 RQ1-OVERLAP-DURATION,1,confirmatory,Distribution of overlap duration (hours) among k=0 headline pairs.,analysis/wp1_coactivity.py,overlap_duration,data/derived/wp1_overlap_duration.csv,sec:rq1,pending
 RQ1-CROSS-PAIR-SHARE,1,confirmatory,Share of k=0 agent-agent pairs that are cross-agent (headline treatment).,analysis/wp1_coactivity.py,cross_pair_share,data/derived/wp1_cross_pairs.csv,sec:rq1,pending
-S2-N-REPOS,2,confirmatory,Count of repositories with >=1 intra pair and with >=1 cross pair (headline k=0).,analysis/wp2_sample.py,stratum_repo_counts,data/samples/universe_counts.json,sec:design,pending
-S3-N-MATCHED,2,confirmatory,Count of repositories with both an intra and a cross eligible pair.,analysis/wp2_sample.py,matched_repo_count,data/samples/universe_counts.json,sec:design,pending
-LEGACY-N,legacy,sensitivity,Legacy sample size and evaluable fraction (747 attempted).,analysis/wp_legacy.py,legacy_availability,data/derived/legacy_rates.csv,sec:legacy,pending
-LEGACY-INTRA-RATE,legacy,sensitivity,Legacy intra-agent conflict rate with Wilson 95% CI.,analysis/wp_legacy.py,legacy_intra_rate,data/derived/legacy_rates.csv,sec:legacy,pending
-LEGACY-CROSS-RATE,legacy,sensitivity,Legacy cross-agent conflict rate with Wilson 95% CI.,analysis/wp_legacy.py,legacy_cross_rate,data/derived/legacy_rates.csv,sec:legacy,pending
-LEGACY-TYPES,legacy,sensitivity,Legacy conflict-signal type shares (content modify/delete add/add other).,analysis/wp_legacy.py,legacy_types,data/derived/legacy_taxonomy.csv,sec:legacy,pending
-LEGACY-FILECAT,legacy,sensitivity,Legacy conflicted-file category shares.,analysis/wp_legacy.py,legacy_filecat,data/derived/legacy_taxonomy.csv,sec:legacy,pending
+S2-N-REPOS,2,confirmatory,Count of repositories with >=1 intra pair and with >=1 cross pair (headline k=0).,analysis/wp2_sample.py,stratum_repo_counts,data/samples/universe_counts.json,sec:design,computed
+S3-N-MATCHED,2,confirmatory,Count of repositories with both an intra and a cross eligible pair.,analysis/wp2_sample.py,matched_repo_count,data/samples/universe_counts.json,sec:design,computed
+LEGACY-N,legacy,sensitivity,Legacy sample size and evaluable fraction (747 attempted).,analysis/wp_legacy.py,legacy_availability,data/derived/legacy_rates.csv,sec:legacy,computed
+LEGACY-INTRA-RATE,legacy,sensitivity,Legacy intra-agent conflict rate with Wilson 95% CI.,analysis/wp_legacy.py,legacy_intra_rate,data/derived/legacy_rates.csv,sec:legacy,computed
+LEGACY-CROSS-RATE,legacy,sensitivity,Legacy cross-agent conflict rate with Wilson 95% CI.,analysis/wp_legacy.py,legacy_cross_rate,data/derived/legacy_rates.csv,sec:legacy,computed
+LEGACY-TYPES,legacy,sensitivity,Legacy conflict-signal type shares (content modify/delete add/add other).,analysis/wp_legacy.py,legacy_types,data/derived/legacy_taxonomy.csv,sec:legacy,computed
+LEGACY-FILECAT,legacy,sensitivity,Legacy conflicted-file category shares.,analysis/wp_legacy.py,legacy_filecat,data/derived/legacy_taxonomy.csv,sec:legacy,computed
 LEGACY-SHARED-REPOS,legacy,exploratory,Count of repositories appearing in both legacy strata.,analysis/wp_legacy.py,legacy_shared_repos,data/derived/legacy_matched.csv,sec:legacy,pending
 LEGACY-MCNEMAR,legacy,exploratory,McNemar exact test on legacy shared-repo intra vs cross (motivating analysis).,analysis/wp_legacy.py,legacy_mcnemar,data/derived/legacy_matched.csv,sec:legacy,pending
 LEGACY-MULTIVENDOR-INTRA,legacy,exploratory,Intra-agent conflict rate in single-vendor vs multi-vendor repos (Fisher).,analysis/wp_legacy.py,legacy_multivendor_intra,data/derived/legacy_composition.csv,sec:legacy,pending

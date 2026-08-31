@@ -1,0 +1,15 @@
+kind,name,count,pct
+file_category,Source Code,1390,0.8444714459295262
+file_category,Other / Assets,84,0.05103280680437424
+file_category,Config & CI,66,0.040097205346294046
+file_category,Manifest & Lockfile,64,0.038882138517618466
+file_category,Docs & Text,42,0.02551640340218712
+conflict_type,content,952,0.576271186440678
+conflict_type,add/add,249,0.15072639225181597
+conflict_type,modify/delete,442,0.2675544794188862
+conflict_type,rename/delete,6,0.0036319612590799033
+conflict_type,file location,2,0.0012106537530266344
+conflict_type,distinct types,1,0.0006053268765133172
+type_group,content,952,0.576271186440678
+type_group,structural,699,0.4231234866828087
+type_group,other,1,0.0006053268765133172

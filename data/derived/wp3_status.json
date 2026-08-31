@@ -1,0 +1,8 @@
+{
+  "reason": "confirmatory rates withheld until \u226590% of S1 and S2 primary draws are replayed",
+  "s1_n": 625,
+  "s1_replay_frac": 0.0016,
+  "s2_n": 231,
+  "s2_replay_frac": 0.0,
+  "status": "UNAVAILABLE"
+}

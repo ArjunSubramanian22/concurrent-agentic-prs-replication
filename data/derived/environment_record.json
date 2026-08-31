@@ -1,0 +1,18 @@
+{
+  "git": "git version 2.50.1 (Apple Git-155)",
+  "git_config": {
+    "diff.renameLimit": "(unset; replay overrides via -c)",
+    "diff.renames": "(unset; replay overrides via -c)",
+    "merge.conflictStyle": "(unset; replay overrides via -c)",
+    "merge.renames": "(unset; replay overrides via -c)"
+  },
+  "os_uname": "Darwin 25.5.0",
+  "python": "3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "/Users/Arjun/cursor/concurrent-agentic-prs-replication/.venv/bin/python",
+  "replay_overrides": {
+    "diff.renameLimit": "400",
+    "diff.renames": "true",
+    "merge.conflictStyle": "merge",
+    "merge.renames": "true"
+  }
+}

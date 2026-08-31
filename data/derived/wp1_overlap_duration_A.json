@@ -1,0 +1,34 @@
+{
+  "hist_counts": [
+    759679,
+    569971,
+    83184,
+    77058,
+    43216,
+    37394,
+    19397,
+    15961,
+    50758,
+    9744
+  ],
+  "hist_edges_hours": [
+    0.0,
+    0.016666666666666666,
+    1.0,
+    6.0,
+    24.0,
+    72.0,
+    168.0,
+    336.0,
+    720.0,
+    2160.0,
+    Infinity
+  ],
+  "mean_hours": 73.58804101739798,
+  "n": 1666362,
+  "note": "percentiles are not stored as a full vector; histogram is exact. mean and share_* are exact.",
+  "share_ge_7d": 0.05752651584709685,
+  "share_lt_1h": 0.7979358626756972,
+  "share_lt_24h": 0.8940986412316171,
+  "treatment": "A"
+}

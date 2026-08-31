@@ -1,0 +1,10 @@
+{
+  "attempted": 747,
+  "evaluable": 716,
+  "label_counts": {
+    "CLEAN": 549,
+    "CONFLICT": 167,
+    "UNAVAIL_fetch": 25,
+    "UNAVAIL_nobase": 6
+  }
+}

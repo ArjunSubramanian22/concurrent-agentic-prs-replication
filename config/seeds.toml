@@ -1,0 +1,15 @@
+# Frozen seeds. Source of truth is ANALYSIS_PLAN.md §5.1.
+# Scripts read analysis.lib.constants, not this file, so a stray edit cannot
+# silently desynchronize. This copy exists for human readers.
+
+MASTER_SEED = 42
+SEED_INTRA_REPOS = 42
+SEED_INTRA_PAIRS = 42
+SEED_MATCHED = 43
+SEED_BOOTSTRAP_BASE = 1042
+BOOTSTRAP_B = 200
+SEED_WP5 = 2026
+SEED_WP6 = 7
+MAX_PAIRS_PER_REPO_STRATUM = 5
+INTRA_REPO_DRAW = 625
+WILSON_Z_LEGACY = 1.96

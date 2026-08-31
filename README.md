@@ -1,67 +1,71 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21186464.svg)](https://doi.org/10.5281/zenodo.21186464)
+# Concurrent Agentic Pull Requests
 
-# Replication Package — Concurrent AI-Agent Pull Requests on GitHub
+Anonymous replication package for a SANER 2027 Agentic AI4SE submission.
 
-This package accompanies the paper *"Concurrent AI-Agent Pull Requests on GitHub:
-Prevalence, Composition, and Merge Conflict Rates."* It contains the pair-level
-results of the RQ3 merge replay, the derived summary tables, and the scripts used
-to sample, replay, and analyze.
+**Title:** *Merge Conflicts Among Concurrent Agentic Pull Requests: Prevalence, Composition, and a Human Baseline*
 
-## Data files
+Every number in the manuscript is emitted by a committed script from committed data. If a computation has not been run, the paper prints **UNAVAILABLE**. It does not invent a value.
 
-### `rq3_merge_replay_full.csv` — pair-level merge-replay results (747 pairs)
-One row per sampled co-active PR pair. Columns:
+The analysis plan (`ANALYSIS_PLAN.md`) was committed **before** any WP3–WP6 model. That commit is the pre-registration.
 
-| column   | meaning |
-|----------|---------|
-| `stratum`| `same` (intra-agent) or `cross` (cross-agent) |
-| `repo`   | GitHub `owner/name` of the repository (one pair per distinct repo) |
-| `prA`, `prB` | PR numbers of the co-active pair |
-| `agentA`, `agentB` | authoring agent of each PR |
-| `label`  | `CLEAN`, `CONFLICT`, `UNAVAIL_fetch` (PR refs force-deleted), `UNAVAIL_nobase` (no reachable merge base) |
-| `n_files`| number of conflicted files (CONFLICT rows only) |
-| `files`  | `\|`-separated conflicted file paths from `git merge-tree` |
-| `types`  | `\|`-separated git conflict types (`content`, `modify/delete`, `add/add`, ...) |
+## What this package already reproduces
 
-Headline numbers derivable from this file: intra-agent 119/601 = 19.8%
-(95% Wilson CI [16.8, 23.2]); cross-agent 48/115 = 41.7% (95% CI [33.1, 50.9]);
-716/747 evaluable (95.8%).
+From `make data analysis figures` (no GitHub token, no Docker, no TeX):
 
-### `rq3_rates_full.csv`
-Per-stratum conflict rates with Wilson 95% intervals, attempted/unavailable counts.
+- RQ1 co-activity under censoring treatments A/B/C and a $k$-sweep
+- WP2 samples (uniform pair within repo; designed match)
+- Re-derivation of the legacy 747-pair replay (rates, taxonomy, McNemar, composition)
+- Figures in `paper/figures/` and macros in `paper/generated/macros.tex`
 
-### `rq3_taxonomy_full.csv`
-Conflicted-file category counts (Source Code 84.4%, Other/Assets 5.1%,
-Config & CI 4.0%, Manifest & Lockfile 3.9%, Docs & Text 2.6% of 1,646 files).
+## What is still live (not in `make all`)
 
-## Scripts (Python 3.12, git >= 2.38 for `merge-tree --write-tree`)
+| Step | Command | Status in this snapshot |
+|---|---|---|
+| Confirmatory merge-tree replay | `make replay` | needs GitHub fetch of PR refs (~3707 unique pairs) |
+| GitHub covariates + human PRs | `make collect` | needs `GITHUB_TOKEN` |
+| Build/test layer | `python analysis/wp5_build_test.py` | needs Docker |
+| PDF | `make paper` | needs TeX Live + IEEEtran |
 
-Run order:
+## Commands
 
-1. `build_sample.py` — builds the stratified sample from the AIDev-pop parquet
-   tables (interval-sweep co-activity; one pair per distinct repository;
-   625 random intra-agent repos, seed=42, plus **all** 122 cross-agent repos).
-   Requires `pull_request.parquet` and `repository.parquet` from AIDev-pop.
-2. `run_replay.py` — threaded, resumable merge replay. For each pair: bare
-   `git init` → fetch `refs/pull/N/head` and `refs/pull/M/head` (shallow,
-   depth 80; depth-600 retry if no merge base) → `git merge-base` →
-   `git merge-tree --write-tree` → parse conflicted paths + conflict types.
-   Appends rows crash-safely; re-running skips completed pairs.
-3. `finish_missing.py` — single-threaded finisher for any pairs lost to
-   interrupted batches.
-4. `analyze.py` — computes per-stratum rates with Wilson CIs and the
-   file-category / conflict-type taxonomy; writes the two summary CSVs.
-5. `make_figures2.py` — regenerates Figure 3 (rates) and Figure 4 (taxonomy).
+```bash
+python -m venv .venv && .venv/bin/pip install -r requirements.txt
+export PYTHONPATH=.
+make all          # data, analysis, figures
+make test
+make replay       # live git fetch; optional --limit via analysis/replay.py
+make collect      # live GitHub API
+make paper        # pdflatex, if installed
+```
 
-The underlying PR corpus is the public AIDev-pop dataset (Li, Zhang & Hassan,
-MSR 2026, arXiv:2602.09185). PR head commits are fetched live from GitHub, so
-availability may drift slightly over time as references are deleted (25 of 747
-were already unavailable at our run).
+Docker (pinned Python 3.12.8 and Debian git):
 
-## Notes
-- Every number in the paper's RQ3 section, Table 2, Figure 3, and Figure 4 is
-  derivable from `rq3_merge_replay_full.csv` via `analyze.py`.
-- Sampling is deterministic (seed=42) given the same AIDev-pop snapshot.
+```bash
+docker build -t caprs .
+docker run --rm -v "$PWD":/work caprs make all
+```
 
-## Archival
-This package is permanently archived at Zenodo: https://doi.org/10.5281/zenodo.21186464
+## Data
+
+- `data/derived/pull_request_light.parquet` — column-pruned AIDev-pop PRs (no title/body)
+- `data/derived/repository.parquet` — AIDev-pop repositories
+- `data/derived/snapshot.json` — SHA-256 of the Hugging Face files, row counts, agent histogram
+- `rq3_merge_replay_full.csv` — legacy earliest-pair replay (747 rows)
+
+Raw Hugging Face parquet is downloaded by `make data` if missing. Expected SHA-256 values are in `scripts/vendor_snapshot.py`.
+
+## Anonymity
+
+This README, the manuscript, and artifact URLs contain no author names. The camera-ready version restores a Zenodo DOI. Do not point reviewers at a deanonymizing GitHub remote.
+
+## Layout
+
+```
+ANALYSIS_PLAN.md     pre-registered plan
+claims.csv           claim → script → output → paper location
+analysis/            WP1–WP6, replay, emitters
+data/derived/        committed extracts and tables
+data/samples/        WP2 pair draws
+paper/               IEEEtran source (10pt, conference, no compsoc)
+legacy scripts at repo root (build_sample.py, …) are the original artifact
+```

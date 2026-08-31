@@ -1,0 +1,38 @@
+{
+  "both_conflict": 11,
+  "cross_conflicts": 26,
+  "cross_n": 60,
+  "cross_only_conflict": 15,
+  "cross_rate": {
+    "ci_high": 0.5589656122387444,
+    "ci_low": 0.3157239680468677,
+    "conflicts": 26,
+    "evaluable": 60,
+    "label": "matched_cross",
+    "rate": 0.43333333333333335
+  },
+  "intra_conflicts": 17,
+  "intra_n": 60,
+  "intra_only_conflict": 6,
+  "intra_rate": {
+    "ci_high": 0.4076728516439118,
+    "ci_low": 0.18506828428432714,
+    "conflicts": 17,
+    "evaluable": 60,
+    "label": "matched_intra",
+    "rate": 0.2833333333333333
+  },
+  "mcnemar": {
+    "disc_ratio": 0.7142857142857143,
+    "disc_ratio_high": 0.887190596078129,
+    "disc_ratio_low": 0.4782488817528863,
+    "n_discordant": 21,
+    "n_only_1": 15,
+    "n_only_2": 6,
+    "p": 0.0783538818359375
+  },
+  "n_shared_evaluable": 60,
+  "n_shared_repos_in_csv": 64,
+  "neither": 28,
+  "paired_rd": 0.15
+}

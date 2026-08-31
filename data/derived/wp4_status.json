@@ -1,0 +1,4 @@
+{
+  "reason": "Human PRs are not in AIDev-pop. Run analysis/collect_github.py with GITHUB_TOKEN, then replay human pairs. No literature rate is substituted.",
+  "status": "UNAVAILABLE"
+}
