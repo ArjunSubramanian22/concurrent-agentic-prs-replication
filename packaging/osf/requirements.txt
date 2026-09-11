@@ -1,0 +1,12 @@
+# Offline reproduction (Python 3.10–3.12). Prefer this over the 3.13 lockfile
+# that shipped with one of the source trees.
+pandas>=2.0,<3
+numpy>=1.24
+pyarrow>=14
+scipy>=1.10
+statsmodels>=0.14
+matplotlib>=3.7
+scikit-learn>=1.3
+pyyaml>=6.0
+pydantic>=2.5
+pytest>=7.4

@@ -27,3 +27,7 @@ data/replay/pairs_replay.csv
 # Secrets
 .env
 *.token
+
+# Anonymous OSF export (built by scripts/build_anonymous_osf.py)
+neurips2026-anonymous/
+dist/*.zip

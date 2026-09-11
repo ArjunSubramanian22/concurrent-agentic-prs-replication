@@ -1,5 +1,13 @@
 # Concurrent Agentic Pull Requests
 
+**NeurIPS 2026 dual-anonymous OSF package:** upload `dist/neurips2026-anonymous-osf.zip` (also copied to `~/Downloads/`). Rebuild from the three source trees with `.venv/bin/python scripts/build_anonymous_osf.py`. Reviewer instructions are in the zip: `README.md` and `OSF.md`.
+
+This git working copy is the measurement study (SANER 2027 Agentic AI4SE). The zip combines it with ConflictBench, Semantic Conflicts, and MergeGym over the shared 577k-pair corpus. Do not upload this git remote; the zip has no `.git` and no author names.
+
+---
+
+Anonymous replication package for a SANER 2027 Agentic AI4SE submission.
+
 Anonymous replication package for a SANER 2027 Agentic AI4SE submission.
 
 **Title:** *Merge Conflicts Among Concurrent Agentic Pull Requests: Prevalence, Composition, and a Human Baseline*
