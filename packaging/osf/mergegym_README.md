@@ -19,3 +19,9 @@ python3 mergegym/scripts/t2_replay.py --subset core
 The T3 predictor-gate **trainer** is not in this tree. Gate mechanics are in `t3_simulator.py`; fitted weights are in `results/t3_summary.json`. Predictor-gated rows in `t3_episode_results.csv` are the released run.
 
 LLM scripts require Claude Code CLI and are optional. Released T1/T2 tables are already in `results/`.
+
+`results/t2_hunk_bundle.jsonl.gz` is omitted from this zip (size). Rebuild it after T2 replay:
+
+```bash
+python3 mergegym/scripts/t2_groundtruth.py --core
+```

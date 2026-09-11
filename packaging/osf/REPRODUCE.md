@@ -49,3 +49,5 @@ PR refs disappear. The 747-pair file already has fetch/base unavailability. A la
 - AIDev per-commit patch table (not redistributable here).
 - Human gold labels for Semantic Conflicts.
 - Raw Hugging Face `pull_request.parquet` (~1.5 GB). Measurement ships a column-pruned extract. `scripts/vendor_snapshot.py` downloads the raw files only if that extract is missing.
+- MergeGym `t2_hunk_bundle.jsonl.gz` (LLM resolver hunk dump). Rebuild with `mergegym/scripts/t2_groundtruth.py` after T2 replay.
+- Older Semantic Conflicts `results/judging_frame.csv.gz` and `results/pool_flags.csv.gz` (pre-v1 dumps). Use `semantic_conflicts/results/v1/` instead.

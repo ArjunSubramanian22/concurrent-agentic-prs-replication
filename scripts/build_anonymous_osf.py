@@ -51,7 +51,35 @@ SKIP_DIR_NAMES = {
     "ablation_scratch",
     "patch_cache",
 }
-SKIP_FILE_NAMES = {".DS_Store", ".coverage", "build_anonymous_osf.py", "t3_sim_check.csv"}
+SKIP_DIR_NAMES = {
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".mypy_cache",
+    ".mplconfig",
+    "htmlcov",
+    "legacy_zip",
+    "neurips2026-anonymous",
+    "packaging",
+    "dist",
+    "t2_work",
+    "lineage_cache",
+    "repo_cache",
+    "git_repos",
+    "ablation_scratch",
+    "patch_cache",
+}
+SKIP_FILE_NAMES = {
+    ".DS_Store",
+    ".coverage",
+    "build_anonymous_osf.py",
+    "t3_sim_check.csv",
+    # Optional LLM T2 bundle (~6MB gzipped). Rebuild with t2_groundtruth.py after replay.
+    "t2_hunk_bundle.jsonl.gz",
+}
 SKIP_SUFFIXES = {".pyc", ".egg-info"}
 SKIP_MANUSCRIPT_PDF = {"vericodegen_paper_draft.pdf", "main.pdf"}
 
@@ -119,6 +147,9 @@ def skip_copy(path: Path) -> bool:
     if path.suffix in SKIP_SUFFIXES:
         return True
     if path.name.endswith(".parquet") and "raw" in path.parts:
+        return True
+    # Historical workshop dumps superseded by semantic_conflicts/results/v1/.
+    if path.name in {"judging_frame.csv.gz", "pool_flags.csv.gz"} and path.parent.name == "results":
         return True
     return False
 
@@ -309,11 +340,25 @@ def zip_tree(src: Path, zip_path: Path) -> None:
     zip_path.parent.mkdir(parents=True, exist_ok=True)
     if zip_path.exists():
         zip_path.unlink()
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+    skip_parts = {".git", ".venv", ".pytest_cache", "__pycache__"}
+    skip_names = {
+        ".DS_Store",
+        "t3_sim_check.csv",
+        "t2_hunk_bundle.jsonl.gz",
+        "vericodegen_paper_draft.pdf",
+        "main.pdf",
+    }
+    with zipfile.ZipFile(
+        zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
+    ) as zf:
         for path in sorted(src.rglob("*")):
             if path.is_dir():
                 continue
-            if ".git" in path.parts or ".venv" in path.parts:
+            if skip_parts & set(path.parts):
+                continue
+            if path.name in skip_names:
+                continue
+            if path.name in {"judging_frame.csv.gz", "pool_flags.csv.gz"} and path.parent.name == "results":
                 continue
             arc = Path(src.name) / path.relative_to(src)
             zf.write(path, arc.as_posix())
